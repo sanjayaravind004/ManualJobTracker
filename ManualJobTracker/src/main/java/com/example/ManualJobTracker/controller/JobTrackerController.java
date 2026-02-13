@@ -23,10 +23,15 @@ public class JobTrackerController {
          return "Added Succesfully";
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public JobTracker updateJob(@PathVariable("id") int id , @RequestBody JobTracker jobTracker) {
         jobTracker.setId(id);
         return jobTrackerService.updateJobById(jobTracker);
+    }
+
+    @PutMapping("/update")
+    public JobTracker updateJobs(@RequestBody JobTracker jobTracker){
+        return jobTrackerService.updateJobs(jobTracker);
     }
 
     @DeleteMapping("/clear/{status}")
